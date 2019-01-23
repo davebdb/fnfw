@@ -155,7 +155,13 @@ for line in fwlog:
 		proto = re.search(r'proto=(\S*?)\s',line).group(1)
 	except:
 		proto = ''
-	
+	if (proto != ''):
+		if (proto == "1"):
+			prototranslated = "ICMP"
+		if (proto == "6"):
+			prototranslated = "TCP"
+		if (proto == "17"):
+			prototranslated = "UDP"
 	
 	#action
 	try:
@@ -294,7 +300,7 @@ for line in fwlog:
 	except:
 		policyname = ''
 	
-	myList=[date,time,devname,devid,level,eventtime,vd,type,subtype,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,logid,appcat,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,]
+	myList=[date,time,devname,devid,level,eventtime,vd,type,subtype,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,dstcountry,proto,prototranslated,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,logid,appcat,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,]
 	csvString=','.join(map(str, myList))
 	if (debug>=2):
 		print('date:',date)
