@@ -300,7 +300,7 @@ for line in fwlog:
 	except:
 		policyname = ''
 	
-	myList=[date,time,devname,devid,level,eventtime,vd,type,subtype,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,dstcountry,proto,prototranslated,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,logid,appcat,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,]
+	myList=[date,time,devname,devid,level,eventtime,vd,type,subtype,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,prototranslated,proto,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,logid,appcat,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,]
 	csvString=','.join(map(str, myList))
 	if (debug>=2):
 		print('date:',date)
