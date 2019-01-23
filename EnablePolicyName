@@ -1,0 +1,82 @@
+Must be done within the CLI in order to enable policyName in the log files on the Fortinet / Fortigate Firewall
+
+----SUMMARY----
+login...
+
+config vdom
+edit VDOM
+config log setting
+set log-policy-name enable
+end
+--------------
+
+
+----FULL OUTPUT----
+FIREWALL # config vdom
+FIREWALL (vdom) # edit VDOM
+FIREWALL (VDOM) # get log setting
+resolve-ip          : disable
+resolve-port        : enable
+log-user-in-upper   : disable
+fwpolicy-implicit-log: enable
+fwpolicy6-implicit-log: disable
+log-invalid-packet  : disable
+local-in-allow      : enable
+local-in-deny-unicast: enable
+local-in-deny-broadcast: enable
+local-out           : enable
+neighbor-event      : disable
+brief-traffic-format: disable
+user-anonymize      : disable
+fortiview-weekly-data: disable
+expolicy-implicit-log: disable
+log-policy-comment  : disable
+log-policy-name     : disable
+custom-log-fields   :
+FIREWALL (VDOM) # config log [tab]
+custom-field     Configure custom log fields.
+disk             Configure disks.
+eventfilter      Configure log event filters.
+fortianalyzer    Configure first FortiAnalyzer device.
+fortiguard       Configure log for FortiCloud.
+gui-display      Configure how log messages are displayed on the GUI.
+memory           Configure memory log.
+null-device      Configure logging for statistics collection for when no external logging destination, such as FortiAnalyzer, is present (data is not saved).
+setting          Configure general log settings.
+syslogd          Configure first syslog device.
+threat-weight    Configure threat weight settings.
+FIREWALL (VDOM) # config log setting
+FIREWALL (setting) #
+FIREWALL (setting) # set log-policy-name
+enable     Enable inserting policy name into traffic logs.
+disable    Disable inserting policy name into traffic logs.
+FIREWALL (setting) # set log-policy-name enable
+FIREWALL (VDOM) # get log setting
+resolve-ip          : disable
+resolve-port        : enable
+log-user-in-upper   : disable
+fwpolicy-implicit-log: enable
+fwpolicy6-implicit-log: disable
+log-invalid-packet  : disable
+local-in-allow      : enable
+local-in-deny-unicast: enable
+local-in-deny-broadcast: enable
+local-out           : enable
+neighbor-event      : disable
+brief-traffic-format: disable
+user-anonymize      : disable
+fortiview-weekly-data: disable
+expolicy-implicit-log: disable
+log-policy-comment  : disable
+log-policy-name     : enable
+custom-log-fields   :
+FIREWALL (VDOM) # show log setting
+config log setting
+    set fwpolicy-implicit-log enable
+    set local-in-allow enable
+    set local-in-deny-unicast enable
+    set local-in-deny-broadcast enable
+    set local-out enable
+    set log-policy-name enable
+end
+
