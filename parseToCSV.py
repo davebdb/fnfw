@@ -4,7 +4,7 @@ import sys
 import re
 
 fileToRead=''
-debug=3
+debug=0
 
 #fwlog = open("/path/to/file/to/read","r")
 args=sys.argv
@@ -14,6 +14,13 @@ if (debug>=3): print(str(args[1]))
 for line in fwlog:
 	y=line.rstrip('\r\n')
 	if (debug>=1): print(y)
+	#type
+	try:
+		type = re.search(r'type="(.*?)"',line).group(1)
+	except:
+		type = ''	
+		
+	if (type != 'traffic'): continue
 	
 	#date
 	try:
@@ -51,14 +58,7 @@ for line in fwlog:
 	except:
 		logid = ''
 	
-	
-	#type
-	try:
-		type = re.search(r'type="(.*?)"',line).group(1)
-	except:
-		type = ''
-	
-	
+
 	#subtype
 	try:
 		subtype = re.search(r'subtype="(.*?)"',line).group(1)
@@ -288,14 +288,14 @@ for line in fwlog:
 	except:
 		transport = ''		
 	
-	myList=[date,time,devname,devid,type,subtype,srcintf,srcip,srcport,dstintf,dstip,dstport]
+	myList=[date,time,devname,devid,level,eventtime,vd,type,subtype,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,logid,appcat,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,]
 	csvString=','.join(map(str, myList))
 	if (debug>=2):
 		print('date:',date)
 		print('time:',time)
 		print('devname:',devname)
 		print('devid:',devid)
-		print('login:',logid)
+		print('logid:',logid)
 		print('type:',type)
 		print('subtype:',subtype)
 		print('level:',level)
