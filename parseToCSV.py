@@ -287,8 +287,14 @@ for line in fwlog:
 		transport = re.search(r'transport=(\S*?)\s',line).group(1)
 	except:
 		transport = ''		
+		
+	#policyname
+	try:
+		policyname = re.search(r'policyname=(\S*?)\s',line).group(1)
+	except:
+		policyname = ''
 	
-	myList=[date,time,devname,devid,level,eventtime,vd,type,subtype,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,logid,appcat,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,]
+	myList=[date,time,devname,devid,level,eventtime,vd,type,subtype,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,logid,appcat,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,]
 	csvString=','.join(map(str, myList))
 	if (debug>=2):
 		print('date:',date)
@@ -312,6 +318,7 @@ for line in fwlog:
 		print('sessionid:',sessionid)
 		print('proto:',proto)
 		print('action:',action)
+		print('policyname:',policyname)
 		print('policyid:',policyid)
 		print('poliyctype:',policytype)
 		print('service:',service)
