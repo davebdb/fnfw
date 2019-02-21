@@ -781,7 +781,7 @@ for line in fwlog:
 trafficGZ.close()	
 utmGZ.close()
 eventGZ.close()
-if (printlines > 0): print("END")
+if (printLines > 0): print("END")
 
 #example for groups
 #email_address = 'Please contact us at: support@datacamp.com'
