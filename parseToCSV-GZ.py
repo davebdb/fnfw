@@ -5,6 +5,11 @@ import sys
 import re
 import gzip
 
+# VARIABLE INITIALIZATION
+
+debug=0
+printLines=0
+
 # Define Functions
 def Date():
 	try:
@@ -468,10 +473,7 @@ def Bandwidth():
 	except:
 		return ''
 
-# VARIABLE INITIALIZATION
 
-debug=0
-printLines=1
 
 if (debug>=1): print("DEBUG LEVEL:",debug)
 
