@@ -3,12 +3,12 @@
 # IMPORTS
 import sys
 import re
-import gzip
+#import gzip
 
 # VARIABLE INITIALIZATION
 
 debug=0
-printLines=0
+printLines=1
 
 # Define Functions
 def Date():
@@ -485,36 +485,39 @@ try:
 except:
 	filestring=''
 try:
-	gzDirectory = str(args[2])
+	searchType = str(args[2])
 except:
-	gzDirectory = '.'
-filedatetime = str(re.search(r'.?(\d{12})',filestring).group(1))
+	searchType= '.'
+if (len(args) < 3):
+	print("NOT ENOUGH ARGS","\n\n")
+	print("parseToCSV-stdout.py LOGFILE searchType")
+	print("\n\n","Currently Supported Types:  traffic  utm  event")
+	sys.exit(1)
+#filedatetime = str(re.search(r'.?(\d{12})',filestring).group(1))
 #fwlog = open(str(args[1]),"r")
-#Kept having errors about UTF-8 decodes, found this online https://stackoverflow.com/questions/42339876/error-unicodedecodeerror-utf-8-codec-cant-decode-byte-0xff-in-position-0-in
 fwlog = open(filestring,"r",encoding="utf8", errors='ignore')
 
 
 #OPEN FILES TO WRITE - if writing files
-trafficFile = "traffic-" + filedatetime + ".csv" + ".gz"
-trafficPath = gzDirectory + "/" + trafficFile
-utmFile = "utm-" + filedatetime + ".csv" + ".gz"
-utmPath = gzDirectory + "/" + utmFile
-eventFile = "event-" + filedatetime + ".csv" + ".gz"
-eventPath = gzDirectory + "/" + eventFile
+#trafficFile = "traffic-" + filedatetime + ".csv" + ".gz"
+#trafficPath = gzDirectory + "/" + trafficFile
+#utmFile = "utm-" + filedatetime + ".csv" + ".gz"
+#utmPath = gzDirectory + "/" + utmFile
+#eventFile = "event-" + filedatetime + ".csv" + ".gz"
+#eventPath = gzDirectory + "/" + eventFile
 
-#trafficGZ = gzip.open(trafficPath,'wb',9)
-trafficGZ = gzip.open(trafficPath,'wt',9)
-utmGZ = gzip.open(utmPath,'wt',9)
-eventGZ = gzip.open(eventPath,'wt',9)
+#trafficGZ = gzip.open(trafficPath,'wt',9)
+#utmGZ = gzip.open(utmPath,'wt',9)
+#eventGZ = gzip.open(eventPath,'wt',9)
 
 # IF DEBUG - print the filename being read
 if (debug>=3): 
 	print(str(args[1]))
-	print(filestring)
+#	print(filestring)
 	print(filedatetime)
-	print(trafficFile)
-	print(gzDirectory)
-	print(trafficPath)
+#	print(trafficFile)
+#	print(gzDirectory)
+#	print(trafficPath)
 
 #exit()
 # start of loop
@@ -536,7 +539,7 @@ for line in fwlog:
 	eventtime=Eventtime()
 
 
-	if (type == 'traffic'): #process TRAFFIC
+	if (type == 'traffic') and (searchType == 'traffic'): #process TRAFFIC
 		srcip=Srcip()
 		srcport=Srcport()
 		srcintf=Srcintf()
@@ -643,10 +646,10 @@ for line in fwlog:
 
 		if (printLines > 0): print(csvString)
 		#trafficGZ.write(csvString.encode()+"\n".encode())
-		trafficGZ.write(csvString + "\n")
+#		trafficGZ.write(csvString + "\n")
 
 		
-	if (type == 'utm'): #process UTM
+	if (type == 'utm') and (searchType == 'utm'): #process UTM
 		srcip=Srcip()
 		srcport=Srcport()
 		srcintf=Srcintf()
@@ -720,9 +723,9 @@ for line in fwlog:
 
 		if (printLines > 0): print(csvString)
 		#utmGZ.write(csvString.encode()+"\n".encode())
-		utmGZ.write(csvString + "\n")
+#		utmGZ.write(csvString + "\n")
 		
-	if (type == 'event'): #process event logs
+	if (type == 'event') and (searchType == 'event'): #process event logs
 		logdesc=Logdesc()
 		action=Action()
 		saddr=Saddr()
@@ -777,13 +780,13 @@ for line in fwlog:
 
 		if (printLines > 0): print(csvString)
 		#eventGZ.write(csvString.encode()+"\n".encode())
-		eventGZ.write(csvString + "\n")		
+#		eventGZ.write(csvString + "\n")		
 		
 	
 	
-trafficGZ.close()	
-utmGZ.close()
-eventGZ.close()
+#trafficGZ.close()	
+#utmGZ.close()
+#eventGZ.close()
 if (printLines > 0): print("END")
 
 #example for groups
