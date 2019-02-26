@@ -9,3 +9,6 @@ gzPreviousHours.py LOG_DIR GZ_DIR
 
 this will run this command against all hours that are not equal to the current hour when executed in the LOG_DIRECTORY. 
 
+Standard output application
+parseToCSV-stdout.py logPath searchType
+searchType may be of values: traffic utm event
