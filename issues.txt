@@ -1,0 +1,3 @@
+Some values within the log file have a , as part of the value.  Example:  Iran, Islamic State of
+Will need to strip commas out in the scripts from any log entry and replace with a hex markup possibly.
+
