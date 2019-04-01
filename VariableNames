@@ -1,0 +1,54 @@
+date:  date (UTC)
+time:  time (UTC)
+devname:  firewall device name
+devid:  firewall serial number
+level:  log level 
+eventtime:  event time in epoch time
+type:  type of log event (system, traffic, utm)
+subtype:  a subtype of the log event
+vd:  virtual domain
+action:  action taken (deny/accept/client-rst/server-rst)
+srcintfrole:  source interface role
+srcintf:  source interface
+srcip:  source ip
+srcport:  source port
+srccountry:  source country
+dstintfrole:  destination interface role
+dstintf:  destination interface
+dstip:  destination ip
+dstport:  destination port
+prototranslated:  protocol translated (UDP/TCP/ICMP)
+proto:  protocol by number
+dstcountry:  destination country
+service:  if service is named based on port, the service name
+trandisp:  translated ______
+transip:  translated source IP (outbound NAT)
+transport:  translated source port
+tranip:  translated destination IP (inbound NAT)
+tranport:  translated destination port
+policytype
+policyid:  policy ID number
+policyname:  policy name
+app:  detected application based on traffic signature
+appid
+appcat
+apprisk
+applist
+logid:  log ID/serial number
+countapp
+crscore
+craction
+crlevel
+duration:  length of session
+sentbyte:  number of bytes sent for this session
+rcvdbyte:  number of bytes received for this session
+sentpkt:  number of packets sent for this session
+rcvdpkt:  number of packets received for this session
+wanin
+wanout
+lanin
+lanout
+sentdelta
+rcvddelta
+utmaction:  IPS based actions
+poluuid
