@@ -52,3 +52,4 @@ sentdelta
 rcvddelta
 utmaction:  IPS based actions
 poluuid
+sessionid:  The session ID number added on 20190402T2015
