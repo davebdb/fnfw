@@ -586,7 +586,7 @@ for line in fwlog:
 		transport=Transport()
 		utmaction=Utmaction()
 		
-		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,prototranslated,proto,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,app,appid,appcat,apprisk,applist,logid,countapp,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,rcvdpkt,wanin,wanout,lanin,lanout,sentdelta,rcvddelta,utmaction,poluuid]
+		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,prototranslated,proto,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,app,appid,appcat,apprisk,applist,logid,countapp,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,rcvdpkt,wanin,wanout,lanin,lanout,sentdelta,rcvddelta,utmaction,poluuid,sessionid]
 		csvString=','.join(map(str, myList))
 		if (debug>=2):
 			print('date:',date)
