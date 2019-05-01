@@ -1,0 +1,32 @@
+https://kb.fortinet.com/kb/documentLink.do?externalID=FD33190
+
+How to close TCP ports 8008 and 8010 on a FortiGate unit
+Products
+FortiGate v4.0 MR2
+FortiGate v4.0 MR3
+FortiGate v5.0
+FortiGate v5.2
+Description
+In some PCI certification scenarios, auditors require that TCP ports 8008 and 8010 be closed to obtain the certification. This article explains how to close these TCP ports.
+
+Solution
+TCP ports 8008 and 8010 can be closed by configuring the following commands on the CLI of the FortiGate unit:
+  config global
+  config webfilter fortiguard
+  set close-ports disable/enable
+  end
+  end
+
+Note: TCP ports 8008 and 8010 are used for the FortiGuard block pages as well as the FortiGuard override pages. This configuration will prevent these two features from working, and will modify the behavior of the FortiGate unit.
+
+TCP Port 8008 is open when Web Filter profile with FortiGuard override feature enabled is applied to firewall policy.  TCP Port 8008 is also open when a proxy-based AV profile is applied to firewall policy.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+CONFIGURATION:
+
+config global
+config webfilter fortiguard
+set close-ports disable/enable
+end
+end
