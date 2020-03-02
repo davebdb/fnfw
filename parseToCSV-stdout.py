@@ -473,6 +473,72 @@ def Bandwidth():
 	except:
 		return ''
 
+def Username():
+	try:
+		return re.search(r'user="(.*?)"',line).group(1)
+	except:
+		return ''
+
+def Usergroup():
+	try:
+		return re.search(r'group="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Authserver():
+	try:
+		return re.search(r'authserver="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Tunneltype():
+	try:
+		return re.search(r'tunneltype="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Tunnelid():
+	try:
+		return re.search(r'tunnelid=(\S*?)\s',line).group(1)
+	except:
+		return ''
+	
+def Remip():
+	try:
+		return re.search(r'remip=(\S*?)\s',line).group(1)
+	except:
+		return ''
+	
+def Dst_host():
+	try:
+		return re.search(r'dst_host="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Reason():
+	try:
+		return re.search(r'reason="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Status():
+	try:
+		return re.search(r'status="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+
+#username=Username() #user=
+#usergroup=Usergroup() #group=
+#authserver=Authserver()
+#tunneltype=Tunneltype()
+#tunnelid=Tunnelid()
+#remip=Remip()
+#dst_host=Dst_host()
+#reason=Reason()
+#status=Status()
+
+
 
 
 if (debug>=1): print("DEBUG LEVEL:",debug)
@@ -743,8 +809,17 @@ for line in fwlog:
 		setuprate=Setuprate()
 		disklograte=Disklograte()
 		fazlograte=Fazlograte()
+		username=Username()
+		usergroup=Usergroup()
+		authserver=Authserver()
+		tunneltype=Tunneltype()
+		tunnelid=Tunnelid()
+		remip=Remip()
+		dst_host=Dst_host()
+		reason=Reason()
+		status=Status()
 		
-		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,logdesc,saddr,nat,portbegin,portend,poolname,duration,cpu,mem,disk,totalsession,bandwidth,setuprate,disklograte,fazlograte,logid,msg]
+		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,logdesc,saddr,nat,portbegin,portend,poolname,duration,cpu,mem,disk,totalsession,bandwidth,setuprate,disklograte,fazlograte,logid,msg,username,usergroup,authserver,tunneltype,tunnelid,remip,dst_host,reason,status]
 		csvString=','.join(map(str, myList))
 		if (debug>=2):
 			print('date:',date)
@@ -774,6 +849,15 @@ for line in fwlog:
 			print('fazlograte:',fazlograte)
 			print('logid:',logid)
 			print('msg:',msg)
+			print('user:',username)
+			print('group:',groupname)
+			print('authserver:',authserver)
+			print('tunneltype:',tunneltype)
+			print('tunnelid:',tunnelid)
+			print('remip:',remip)
+			print('dst_host:',dst_host)
+			print('reason:',reason)
+			print('status:',status)
 
 
 			print(myList)
