@@ -53,3 +53,12 @@ rcvddelta
 utmaction:  IPS based actions
 poluuid
 sessionid:  The session ID number added on 20190402T2015
+logdesc
+tunneltype
+tunnelid
+remip
+user
+group
+dst_host
+reason
+msg
