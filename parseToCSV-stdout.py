@@ -792,8 +792,11 @@ for line in fwlog:
 		msg=Msg()
 		scertcname=Scertcname()
 		eventtype=Eventtype()
+		username=Username()
+		usergroup=Usergroup()
+		authserver=Authserver()
 		
-		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,srcintfrole,srcintf,srcip,srcport,dstintfrole,dstintf,dstip,dstport,prototranslated,proto,service,direction,policyid,app,appid,appcat,apprisk,applist,logid,hostname,url,scertcname,incidentserialno,eventtype,sessionid,msg]
+		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,srcintfrole,srcintf,srcip,srcport,dstintfrole,dstintf,dstip,dstport,prototranslated,proto,service,direction,policyid,app,appid,appcat,apprisk,applist,logid,hostname,url,scertcname,incidentserialno,eventtype,sessionid,msg,username,usergroup,authserver]
 		csvString=','.join(map(str, myList))
 		if (debug>=2):
 			print('date:',date)
@@ -833,6 +836,9 @@ for line in fwlog:
 			print('eventtype:',eventtype)
 			print('incidentserialno:',incidentserialno)
 			print('msg:',msg)
+			print('user:',username)
+			print('group:',usergroup)
+			print('authserver:',authserver)
 		
 
 			print(myList)
