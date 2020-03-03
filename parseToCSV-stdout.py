@@ -527,6 +527,38 @@ def Status():
 	except:
 		return ''
 	
+def Devtype():
+	try:
+		return re.search(r'devtype="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Devcategory():
+	try:
+		return re.search(r'devcategory="(.?*)"',line).group(1)
+	except:
+		return ''
+	
+def Mastersrcmac():
+	try:
+		return re.search(r'mastersrcmac="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Srcmac():
+	try:
+		return re.search(r'srcmac="(.*?)"',line).group(1)
+	except:
+		return ''
+	
+def Srcserver():
+	try:
+		return re.search(r'srcserver=(\S*?)\s',line).group(1)
+	except:
+		return ''
+	
+
+	
 
 #username=Username() #user=
 #usergroup=Usergroup() #group=
@@ -651,8 +683,16 @@ for line in fwlog:
 		transip=Transip()
 		transport=Transport()
 		utmaction=Utmaction()
+		username=Username()
+		usergroup=Usergroup()
+		authserver=Authserver()
+		devtype=Devtype()
+		devcategory=Devcategory()
+		mastersrcmac=Mastersrcmac()
+		srcmac=Srcmac()
+		srcserver=Srcserver()
 		
-		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,prototranslated,proto,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,app,appid,appcat,apprisk,applist,logid,countapp,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,rcvdpkt,wanin,wanout,lanin,lanout,sentdelta,rcvddelta,utmaction,poluuid,sessionid]
+		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,srcintfrole,srcintf,srcip,srcport,srccountry,dstintfrole,dstintf,dstip,dstport,prototranslated,proto,dstcountry,service,trandisp,transip,transport,tranip,tranport,policytype,policyid,policyname,app,appid,appcat,apprisk,applist,logid,countapp,crscore,craction,crlevel,duration,sentbyte,rcvdbyte,sentpkt,rcvdpkt,wanin,wanout,lanin,lanout,sentdelta,rcvddelta,utmaction,poluuid,sessionid,username,usergroup,authserver,devtype,devcategory,mastersrcmac,srcmac,srcserver]
 		csvString=','.join(map(str, myList))
 		if (debug>=2):
 			print('date:',date)
@@ -708,6 +748,16 @@ for line in fwlog:
 			print('transip:',transip)
 			print('transport:',transport)
 			print('poluuid:',poluuid)
+			print('user:',username)
+			print('group:',usergroup)
+			print('authserver:',authserver)
+			print('devtype:',devtype)
+			print('devcategory:',devcategory)
+			print('mastersrcmac:',mastersrcmac)
+			print('srcmac:',srcmac)
+			print('srcserver:',srcserver)
+			
+			
 			print(myList)
 
 		if (printLines > 0): print(csvString)
@@ -818,6 +868,7 @@ for line in fwlog:
 		dst_host=Dst_host()
 		reason=Reason()
 		status=Status()
+
 		
 		myList=[date,time,devname,devid,level,eventtime,type,subtype,vd,action,logdesc,saddr,nat,portbegin,portend,poolname,duration,cpu,mem,disk,totalsession,bandwidth,setuprate,disklograte,fazlograte,logid,msg,username,usergroup,authserver,tunneltype,tunnelid,remip,dst_host,reason,status]
 		csvString=','.join(map(str, myList))
