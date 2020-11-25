@@ -1,0 +1,7 @@
+show full
+
+show full system interface
+
+config user ldap
+
+show full user ldap 
