@@ -1,0 +1,28 @@
+For Duo and other human interaction authentication
+
+https://duo.com/docs/fortinet#configure-your-fortinet-fortigate-ssl-vpn
+
+default value is 5 seconds
+
+Configure timeout
+The Fortinet appliance has a default timeout of 5 seconds, which will fail for anything other than a passcode authentication. The timeout can be increased from the Fortinet command line interface to resolve the issue. Duo recommends increasing the timeout to at least 60 seconds
+
+Connect to the appliance CLI. Consult the documentation that accompanied your Fortinet device for more information.
+Execute the following commands:
+config system global
+set remoteauthtimeout 60
+end
+
+
+
+if not done, error message that appears in Log & Report -> Events -> VPN
+
+Action	ssl-login-fail
+Reason	sslvpn_login_no_matching_policy
+
+or
+
+
+Action	ssl-login-fail
+Reason	sslvpn_login_permission_denied
+
