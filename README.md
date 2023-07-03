@@ -12,3 +12,4 @@ this will run this command against all hours that are not equal to the current h
 Standard output application
 parseToCSV-stdout.py logPath searchType
 searchType may be of values: traffic utm event
+
